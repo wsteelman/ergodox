@@ -16,20 +16,27 @@ usage: build.py [-h] [-o OUTPUT_DIR] -k KEYBOARDS [-c CMAKE_DIR] [-i KLL_DIR]
                 -l LAYERS
 
 optional arguments:
+
   -h, --help            show this help message and exit
+  
   -o OUTPUT_DIR, --output_dir OUTPUT_DIR
                         (defualt='./') directory to store output
+                        
   -k KEYBOARDS, --keyboards KEYBOARDS
                         space separated list of the keyboards to compile for,
                         choose any of [ergodox-left, ergodox-right]
+                        
   -c CMAKE_DIR, --cmake_dir CMAKE_DIR
                         (default='../controller') directory location of
                         controller cmake
+                        
   -i KLL_DIR, --kll_dir KLL_DIR
                         (default='../kll') directory look for KLL files
+                        
   -l LAYERS, --layers LAYERS
                         semi-colon separated list of kll layers in order,
                         assuming first layer is default map
+                        
  
 The script will then perform the following actions
 1. The OUTPUT_DIR will be create, if it doesn't already exist
