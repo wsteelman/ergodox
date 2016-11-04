@@ -63,10 +63,10 @@ default_cmake_opts = {
 # main
 parser = argparse.ArgumentParser()
 parser.add_argument("-o", "--output_dir", default='.',               help="(defualt='./') directory to store output")
-parser.add_argument("-k", "--keyboards",  required=True,             help="space separated list of the keyboards to compile for")
-parser.add_argument("-c", "--cmake_dir",  default='../controller',   help="directory location of controller cmake")
-parser.add_argument("-i", "--kll_dir",    default='../kll',          help="directory look for KLL files")
-parser.add_argument("-l", "--layers",     required=True,             help="semi-colon separated list of kll layers in order")
+parser.add_argument("-k", "--keyboards",  required=True,             help="space separated list of the keyboards to compile for, choose any of [ergodox-left, ergodox-right]")
+parser.add_argument("-c", "--cmake_dir",  default='../controller',   help="(default='../controller') directory location of controller cmake")
+parser.add_argument("-i", "--kll_dir",    default='../kll',          help="(default='../kll') directory look for KLL files")
+parser.add_argument("-l", "--layers",     required=True,             help="semi-colon separated list of kll layers in order, assuming first layer is default map")
 args = parser.parse_args()
 
 # expand directories to be absolute paths
