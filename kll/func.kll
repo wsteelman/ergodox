@@ -22,6 +22,8 @@ U"9" : U"F11";
 U"0" : U"F12";
 U"MINUS" : flashMode();
 U"LBRACE" : ledControl( 5, 0, 0 );
+U"Y" : 'gT';
+U"N" : 'gt';
 U"U" : U"HOME";
 U"I" : U"END";
 U"H" : U"LEFT";
