@@ -1,4 +1,4 @@
-#!/user/local/bin python3.5
+#!/usr/local/bin/python3.5
 import argparse
 import os
 import shutil
