@@ -9,8 +9,8 @@ def generate_cmake_cmd(location, opts):
    cmd = 'cmake {cmake_dir} '.format(cmake_dir=location)
    for key, val in opts.items():
       cmd += "'-D{opt}={val}' ".format(opt=key, val=val)
-   return cmd 
- 
+   return cmd
+
 def build(name, opts, cli_args):
    print('\nBuilding {name}...'.format(name=name))
    # create and cd to output directory
@@ -23,22 +23,22 @@ def build(name, opts, cli_args):
    # copy KLL files to output dir
    for filename in glob.glob('{kll_dir}/*'.format(kll_dir=cli_args.kll_dir)):
       shutil.copy(filename, './')
-   
+
    cmd = generate_cmake_cmd(cli_args.cmake_dir, opts)
    print(cmd)
-   exit_code = subprocess.call(cmd, shell=True) 
+   exit_code = subprocess.call(cmd, shell=True)
    if exit_code:
-      print('ERROR: failed to cmake {name}'.format(name=name)) 
+      print('ERROR: failed to cmake {name}'.format(name=name))
       return False
-   
+
    exit_code = subprocess.call("make")
    if exit_code:
-      print('ERROR: failed to make {name}'.format(name=name)) 
+      print('ERROR: failed to make {name}'.format(name=name))
       return False
-  
-   return True 
 
-# keyboard specific cmake options  
+   return True
+
+# keyboard specific cmake options
 keyboards = {
    'ergodox-left' : {
       'CHIP' : 'mk20dx256vlh7',
@@ -49,13 +49,29 @@ keyboards = {
       'CHIP' : 'mk20dx256vlh7',
       'ScanModule' : 'Infinity_Ergodox',
       'BaseMap' : 'scancode_map rightHand slave1 leftHand'
-      }
+      },
+   'whitefox' : {
+      'CHIP' : 'mk20dx256vlh7',
+      'ScanModule' : 'WhiteFox',
+      'BaseMap' : 'scancode_map'
+      },
+   'infinity-60' : {
+      'CHIP' : 'mk20dx128vlf5',
+      'ScanModule' : 'Infinity_60%',
+      'BaseMap' : 'scancode_map'
+      },
+   'infinity-60-led' : {
+      'CHIP' : 'mk20dx128vlf5',
+      'ScanModule' : 'Infinity_60%_LED',
+      'BaseMap' : 'scancode_map'
+      },
+
 }
 
 # default/shared cmake options
 default_cmake_opts = {
    'COMPILER'     : 'gcc',
-   'MacroModule'  : 'PartialMap', 
+   'MacroModule'  : 'PartialMap',
    'OutputModule' : 'pjrcUSB',
    'DebugModule'  : 'full',
 }
@@ -89,12 +105,12 @@ for k in keyboards_to_build:
    if not len(layers):
       print('ERROR: at least one layer must be specified')
       exit(1)
-    
+
    cmake_opts['DefaultMap'] = '{layer}'.format(layer=layers.pop(0))
    if len(layers):
       partial_maps = ''
       for layer in layers:
-         partial_maps += '{name}; '.format(name=layer) 
+         partial_maps += '{name}; '.format(name=layer)
       cmake_opts['PartialMaps'] = partial_maps
 
    ret_code = build(k, cmake_opts, args)
