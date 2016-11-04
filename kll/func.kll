@@ -28,8 +28,8 @@ U"H" : U"LEFT";
 U"J" : U"DOWN";
 U"K" : U"UP";
 U"L" : U"RIGHT";
-U"SEMICOLON" : U"RIGHT";
 U"QUOTE" : U"INSERT";
 U"M" : U"PAGEDOWN";
 U"COMMA" : U"PAGEUP";
-
+U"PAGEUP" : U"LALT" + U"LGUI" + U"LEFT";
+U"PAGEDOWN" : U"LALT" + U"LGUI" + U"RIGHT";
