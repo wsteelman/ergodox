@@ -3,10 +3,10 @@
 This is a repo to track my custom KLL layouts for the Ergodox Infinity.  
 
 Included in the repo is:
-  kll/        custom KLL files
-  build/      python build script
-  lcd/        bmp images used for custom lcd output
-  gui_layout  old KLL and JSON from the I:C web configurator
+- kll/        custom KLL files
+- build/      python build script
+- lcd/        bmp images used for custom lcd output
+- gui_layout  old KLL and JSON from the I:C web configurator
   
   
 ## Build
