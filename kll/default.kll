@@ -53,10 +53,10 @@ U"DELETE" : U"ESCAPE";
 U"BACKSPACE" : U"SPACE";
 
 # Left Bottom Row
-U"FUNCTION5" : U"LALT";
+U"FUNCTION5" : U"LGUI";
 U"FUNCTION4" : '@';
 U"FUNCTION3" : U"BACKSLASH";
-U"BACKTICK" : U"LGUI";
+U"BACKTICK" : U"LALT";
 U"LGUI" : U"LCTRL";
 
 #------------------
