@@ -29,11 +29,14 @@ def build(name, opts, cli_args):
    exit_code = subprocess.call(cmd, shell=True) 
    if exit_code:
       print('ERROR: failed to cmake {name}'.format(name=name)) 
+      return False
    
    exit_code = subprocess.call("make")
    if exit_code:
       print('ERROR: failed to make {name}'.format(name=name)) 
-   
+      return False
+  
+   return True 
 
 # keyboard specific cmake options  
 keyboards = {
@@ -59,7 +62,6 @@ default_cmake_opts = {
 
 # main
 parser = argparse.ArgumentParser()
-parser.add_argument("-v", "--verbose",                               help="increase output verbosity")
 parser.add_argument("-o", "--output_dir", default='.',               help="(defualt='./') directory to store output")
 parser.add_argument("-k", "--keyboards",  required=True,             help="space separated list of the keyboards to compile for")
 parser.add_argument("-c", "--cmake_dir",  default='../controller',   help="directory location of controller cmake")
@@ -67,7 +69,7 @@ parser.add_argument("-i", "--kll_dir",    default='../kll',          help="direc
 parser.add_argument("-l", "--layers",     required=True,             help="semi-colon separated list of kll layers in order")
 args = parser.parse_args()
 
-# expand output directory to be absolute path
+# expand directories to be absolute paths
 args.output_dir = os.path.abspath(args.output_dir)
 args.kll_dir = os.path.abspath(args.kll_dir)
 args.cmake_dir = os.path.abspath(args.cmake_dir)
@@ -92,10 +94,10 @@ for k in keyboards_to_build:
    if len(layers):
       partial_maps = ''
       for layer in layers:
-         #partial_maps += '{name} lcdFuncMap; '.format(name=layer) 
          partial_maps += '{name}; '.format(name=layer) 
       cmake_opts['PartialMaps'] = partial_maps
 
-   build(k, cmake_opts, args)
-
+   ret_code = build(k, cmake_opts, args)
+   if not ret_code:
+      break;
 
