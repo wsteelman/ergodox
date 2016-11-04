@@ -26,5 +26,4 @@ U"RSHIFT" : '_';
 U"LEFT" : '^';
 U"DOWN" : '<';
 U"UP" : '>';
-U"RIGHT" : U"BACKSLASH";
-
+U"SLASH" : U"BACKSLASH";
