@@ -62,7 +62,7 @@ U"LGUI" : U"LCTRL";
 #------------------
 
 # Right Top Row
-U"FUNCTION6" : U"F12";
+U"FUNCTION6" : U"LCTRL" + U"LSHIFT" + CONS"EJECT";
 U"6" : U"6";
 U"7" : U"7";
 U"8" : U"8";
