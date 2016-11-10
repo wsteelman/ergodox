@@ -1,11 +1,10 @@
-Name = "MDErgo1";
+Name = "default";
 Layout = "Default";
 Base = "Blank";
 Version = "0.1";
-Author = "HaaTa (Jacob Alexander) 2015";
+Author = "Will Steelman";
 KLL = "0.3c";
-Date = "2015-09-12";
-Generator = "KIICONF 0.2";
+Date = "2016-11-08";
 
 # Left Top Row
 U"ESC" : U"PRINTSCREEN";
@@ -48,7 +47,7 @@ U"LSHIFT" : U"LSHIFT";
 
 # Left Bottomr Thumb Cluster
 U"HOME" : U"FUN2";
-U"END" : U"FUN3";
+U"END" : U"FUN4";
 U"DELETE" : U"ESCAPE";
 U"BACKSPACE" : U"SPACE";
 

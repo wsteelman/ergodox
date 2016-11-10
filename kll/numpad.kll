@@ -1,11 +1,10 @@
-Name = "MDErgo1";
+Name = "numpad";
 Layout = "Default";
 Base = "Blank";
 Version = "0.1";
-Author = "HaaTa (Jacob Alexander) 2015";
+Author = "Will Steelman";
 KLL = "0.3c";
-Date = "2015-09-12";
-Generator = "KIICONF 0.2";
+Date = "2016-11-08";
 
 U"F" : U"RIGHT";
 U"D" : U"UP";

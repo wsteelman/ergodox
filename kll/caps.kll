@@ -1,0 +1,61 @@
+Name = "default";
+Layout = "Default";
+Base = "Blank";
+Version = "0.1";
+Author = "Will Steelman";
+KLL = "0.3c";
+Date = "2016-11-08";
+
+# Left Top-Middle Row
+#U"FUNCTION1" : CONS"MUTE";
+U"T" : 'T';
+U"R" : 'R';
+U"E" : 'E';
+U"W" : 'W';
+U"Q" : 'Q';
+#U"BACKSLASH" : U"TAB";
+
+# Left Middle Row
+U"G" : 'G';
+U"F" : 'F';
+U"D" : 'D';
+U"S" : 'S';
+U"A" : 'A';
+#U"TAB" : U"FUN1";
+
+# Left Bottom-Middle Row
+#U"FUNCTION2" : U"PREV LAYER";
+U"B" : 'B';
+U"V" : 'V';
+U"C" : 'C';
+U"X" : 'X';
+U"Z" : 'Z';
+#U"LSHIFT" : U"LSHIFT";
+
+#------------------
+
+# Right Top-Middle Row
+#U"LBRACE" : U"DELETE";
+U"Y" : 'Y';
+U"U" : 'U';
+U"I" : 'I';
+U"O" : 'O';
+U"P" : 'P';
+#U"RBRACE" : U"EQUAL";
+
+# Right Middle Row
+U"H" : 'H';
+U"J" : 'J';
+U"K" : 'K';
+U"L" : 'L';
+#U"SEMICOLON" : U"SEMICOLON";
+#U"QUOTE" : U"QUOTE";
+
+# Right Bottom-Middle Row
+#U"FUNCTION7" : U"NEXT LAYER";
+U"N" : 'N';
+U"M" : 'M';
+#U"COMMA" : U"COMMA";
+#U"PERIOD" : U"PERIOD";
+#U"SLASH" : U"SLASH";
+#U"RSHIFT" : U"MINUS";
