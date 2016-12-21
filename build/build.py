@@ -43,26 +43,31 @@ keyboards = {
    'ergodox-left' : {
       'CHIP' : 'mk20dx256vlh7',
       'ScanModule' : 'Infinity_Ergodox',
+      'InterconnectModule' : 'UART',
       'BaseMap' : 'scancode_map leftHand slave1 rightHand'
       },
    'ergodox-right' : {
       'CHIP' : 'mk20dx256vlh7',
       'ScanModule' : 'Infinity_Ergodox',
+      'InterconnectModule' : 'UART',
       'BaseMap' : 'scancode_map rightHand slave1 leftHand'
       },
    'whitefox' : {
       'CHIP' : 'mk20dx256vlh7',
       'ScanModule' : 'WhiteFox',
+      'InterconnectModule' : 'None',
       'BaseMap' : 'scancode_map'
       },
    'infinity-60' : {
       'CHIP' : 'mk20dx128vlf5',
       'ScanModule' : 'Infinity_60%',
+      'InterconnectModule' : 'None',
       'BaseMap' : 'scancode_map'
       },
    'infinity-60-led' : {
       'CHIP' : 'mk20dx128vlf5',
       'ScanModule' : 'Infinity_60%_LED',
+      'InterconnectModule' : 'None',
       'BaseMap' : 'scancode_map'
       },
 
@@ -72,7 +77,7 @@ keyboards = {
 default_cmake_opts = {
    'COMPILER'     : 'gcc',
    'MacroModule'  : 'PartialMap',
-   'OutputModule' : 'pjrcUSB',
+   'OutputModule' : 'dynamicOut', #'pjrcUSB',
    'DebugModule'  : 'full',
 }
 
