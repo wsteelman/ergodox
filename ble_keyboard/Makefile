@@ -2,7 +2,7 @@ PdROJECT_NAME     := ble_app_hids_keyboard_pca10040_s132
 TARGETS          := nrf52832_xxaa
 OUTPUT_DIRECTORY := _build
 
-SDK_ROOT := /Users/wsteelman/install/nRF5_SDK_12.1.0_SDK
+SDK_ROOT := /Users/will/install/nRF5_SDK_12.1.0_SDK
 PROJ_DIR := ./
 
 $(OUTPUT_DIRECTORY)/nrf52832_xxaa.out: \
@@ -59,8 +59,7 @@ SRC_FILES += \
   $(SDK_ROOT)/components/ble/ble_services/ble_hids/ble_hids.c \
   $(SDK_ROOT)/components/softdevice/common/softdevice_handler/softdevice_handler.c \
   $(SDK_ROOT)/components/softdevice/common/softdevice_handler/softdevice_handler_appsh.c \
-  $(PROJ_DIR)/Utils/standard/uart.c \
-  $(PROJ_DIR)/Utils/standard/dma.c \
+  $(PROJ_DIR)/Utils/standard/nrf52_uart.c \
   $(PROJ_DIR)/Interconnect/UART/uart_message_pipe.c \
   $(PROJ_DIR)/Interconnect/UART/interconnect.c \
   $(PROJ_DIR)/main.c \
@@ -196,7 +195,8 @@ CFLAGS += -ffunction-sections -fdata-sections -fno-strict-aliasing
 CFLAGS += -fno-builtin --short-enums
 # generate dependency output file
 CFLAGS += -MP -MD
-CFLAGS += -D_mk20dx256vlh7_=1
+CFLAGS += -D_nRF52832_
+#CFLAGS += -D_mk20dx256vlh7_
 CFLAGS += -DF_CPU=72000000
 
 # C++ flags common to all targets

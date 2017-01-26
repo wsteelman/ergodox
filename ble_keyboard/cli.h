@@ -48,7 +48,7 @@
 	const PROGMEM char name##CLIDict_DescEntry[] = description;
 
 // ARM is easy :P
-#elif defined(_mk20dx128_) || defined(_mk20dx128vlf5_) || defined(_mk20dx256_) || defined(_mk20dx256vlh7_) // ARM
+#elif defined(_mk20dx128_) || defined(_mk20dx128vlf5_) || defined(_mk20dx256_) || defined(_mk20dx256vlh7_) || defined(_nRF52832_)// ARM
 #define CLIDict_Def(name,description) \
 	const char name##Name[] = description; \
 	const CLIDictItem name[]
