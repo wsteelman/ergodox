@@ -22,7 +22,7 @@
 #pragma once
 
 // ----- Includes -----
-
+#include <stdint.h>
 
 // ----- Defines -----
 
