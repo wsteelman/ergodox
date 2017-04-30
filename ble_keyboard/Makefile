@@ -2,7 +2,7 @@ PdROJECT_NAME     := ble_app_hids_keyboard_pca10040_s132
 TARGETS          := nrf52832_xxaa
 OUTPUT_DIRECTORY := _build
 
-SDK_ROOT := /Users/wsteelman/install/nRF5_SDK_12.1.0_SDK
+SDK_ROOT := /Users/will/install/nRF5_SDK_12.1.0_SDK
 PROJ_DIR := ./
 
 $(OUTPUT_DIRECTORY)/nrf52832_xxaa.out: \
@@ -187,6 +187,7 @@ CFLAGS += -mcpu=cortex-m4
 CFLAGS += -mthumb -mabi=aapcs
 CFLAGS +=  -Wall -Werror -O3 -g3
 CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
+CFLAGS += -Wno-unused-function -Wno-unused-but-set-variable
 # keep every function in separate section, this allows linker to discard unused ones
 CFLAGS += -ffunction-sections -fdata-sections -fno-strict-aliasing
 CFLAGS += -fno-builtin --short-enums

@@ -33,6 +33,7 @@
 #include "nrf_assert.h"
 #include "app_error.h"
 #include "nrf_gpio.h"
+#include "nrf_delay.h"
 #include "bsp_btn_ble.h"
 #include "app_scheduler.h"
 #include "app_timer_appsh.h"
@@ -46,6 +47,7 @@
 #include <buttons_leds.h>
 #include <ble_stack.h>
 #include <interconnect.h>
+//#include <nrf52_uart2.h>
 
 #if BUTTONS_NUMBER < 2
 #error "Not enough resources on board"
@@ -70,31 +72,31 @@
  */
 static void scheduler_init(void)
 {
-    APP_SCHED_INIT(SCHED_MAX_EVENT_DATA_SIZE, SCHED_QUEUE_SIZE);
+   APP_SCHED_INIT(SCHED_MAX_EVENT_DATA_SIZE, SCHED_QUEUE_SIZE);
 }
 
 
 static void button_disconnect(uint8_t data)
 {
-   uint32_t         err_code;
+   uint32_t       err_code;
    err_code = sd_ble_gap_disconnect(m_conn_handle,
-                                    BLE_HCI_REMOTE_USER_TERMINATED_CONNECTION);
+                           BLE_HCI_REMOTE_USER_TERMINATED_CONNECTION);
    if (err_code != NRF_ERROR_INVALID_STATE)
    {
-       APP_ERROR_CHECK(err_code);
+      APP_ERROR_CHECK(err_code);
    }
 }
 
 static void button_whitelist_off(uint8_t data)
 {
-   uint32_t         err_code;
+   uint32_t       err_code;
    if (m_conn_handle == BLE_CONN_HANDLE_INVALID)
    {
-       err_code = ble_advertising_restart_without_whitelist();
-       if (err_code != NRF_ERROR_INVALID_STATE)
-       {
-           APP_ERROR_CHECK(err_code);
-       }
+      err_code = ble_advertising_restart_without_whitelist();
+      if (err_code != NRF_ERROR_INVALID_STATE)
+      {
+         APP_ERROR_CHECK(err_code);
+      }
    }
 }
 
@@ -102,7 +104,7 @@ static void button_key_press(uint8_t data)
 {
    if (m_conn_handle != BLE_CONN_HANDLE_INVALID)
    {
-       keys_send(1, &data);
+      keys_send(1, &data);
    }
 }
 
@@ -113,20 +115,68 @@ static void register_button_events()
    register_button_callback(BSP_EVENT_KEY_0, &button_key_press);
 }
 
+enable_master_msg_t     enable_master_msg       = { {CmdCommand_SYN, 0x01, sizeof(enable_master_msg_t), CmdEnableMaster}, 0xFF, usb_protocol};
 /**@brief Function for application main entry.
  */
 int main(void)
 {
 
-    register_button_events();
-    ble_stack_init();
-    scheduler_init();
+   register_button_events();
+   ble_stack_init();
+   scheduler_init();
 
-    // Enter main loop.
-    for (;;)
-    {
-        app_sched_execute();
-    }
+//   uint8_t tx_pin = 7;
+//   nrf_gpio_cfg_output(tx_pin);
+//   nrf_gpio_pin_clear(tx_pin);
+//#define BUF_SIZE 32
+//   uint8_t uart_rx_buf[BUF_SIZE] = {0};
+//   uint8_t uart_tx_buf[BUF_SIZE] = {0};
+//
+//   uart_handle_t uart = uart_config(0, 1);
+//   if (uart == NULL)
+//      return 0;
+//   uart_rx_dma_setup(0, uart, uart_rx_buf, BUF_SIZE);
+//
+//   uart_start(uart); 
+//
+//   // Enter main loop.
+//   uint8_t data = 0xAA;
+//   uint8_t last_rx_idx = 0;
+//   uint8_t last_tx_idx = 0;
+   Iconnect_setup(ICONNECT_ENABLE_DOWN);
+   
+   enable_master_msg.id = 1;
+   enable_master_msg.output_protocol = usb_protocol;
+   
+   error_code_t err = NOT_READY;
+   while (err != SUCCESS)
+   {
+      err = Iconnect_send_msg(Iconnect_down, &enable_master_msg.header);
+      nrf_delay_ms(100); 
+   }
+    
+   for (;;)
+   {
+//      uart_tx_buf[last_tx_idx] = data;
+//      last_tx_idx = (last_tx_idx+1) % BUF_SIZE;
+//      uart_send(uart, data++);
+//      nrf_delay_us(200);
+//      
+//      uint8_t cur_rx_idx = uart_rx_dma_buffer_position(uart);
+//         
+//      while (last_rx_idx != cur_rx_idx)
+//      {
+//         if (uart_rx_buf[last_rx_idx] == uart_tx_buf[last_rx_idx])//last_data+1)
+//            nrf_gpio_pin_clear(tx_pin);
+//         else
+//            nrf_gpio_pin_set(tx_pin);
+//            
+//         last_rx_idx = (last_rx_idx + 1) % BUF_SIZE;
+//      }
+
+      app_sched_execute();
+   }
+ 
 }
 
 
