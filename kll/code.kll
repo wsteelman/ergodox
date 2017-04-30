@@ -6,23 +6,30 @@ Author = "Will Steelman";
 KLL = "0.3c";
 Date = "2016-11-08";
 
+# Left Side
+U"R" : '[]', U"LEFT";
+U"F" : '()', U"LEFT";
+U"V" : '<>', U"LEFT";
+U"B" : '{}', U"LEFT";
 
-U"Y" : '->';
-U"U" : '&';
+# Right side
+U"Y" : '&';
+U"U" : '|';
 U"I" : U"LBRACE";
 U"O" : U"RBRACE";
-U"P" : '#';
-U"H" : '*';
-U"J" : '|';
+U"P" : '!';
+U"H" : '->';
+U"J" : '*';
 U"K" : '(';
 U"L" : ')';
 U"SEMICOLON" : '%';
-U"N" : '~';
-U"M" : '!';
-U"COMMA" : '{';
-U"PERIOD" : '}';
+U"N" : '{';
+U"M" : '}';
+U"COMMA" : '<';
+U"PERIOD" : '>';
 U"RSHIFT" : '_';
 U"LEFT" : '^';
 U"DOWN" : '<';
 U"UP" : '>';
 U"SLASH" : U"BACKSLASH";
+U"DELETE" : U"TAB";
